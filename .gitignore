@@ -1,0 +1,9 @@
+.venv/        # Ignore the entire virtual environment directory
+__pycache__/ # Ignore Python bytecode directories
+*.pyc        # Ignore compiled Python files
+*.log        # Ignore log files
+.DS_Store    # Ignore macOS desktop services files
+secrets.txt  # Ignore files containing secrets
+*.env         # Ignore environment files
+.env
+.venv
