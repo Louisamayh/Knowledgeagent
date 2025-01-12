@@ -2,6 +2,7 @@ from phi.agent import Agent
 from phi.model.openai import OpenAIChat
 from phi.knowledge.pdf import PDFKnowledgeBase
 from phi.vectordb.pgvector import PgVector, SearchType
+from phi.playground import Playground, serve_playground_app
 
 db_url = "postgresql+psycopg://ai:ai@localhost:5532/ai"
 knowledge_base = PDFKnowledgeBase(
@@ -29,5 +30,10 @@ agent = Agent(
     # debug_mode=True,
 )
 
-agent.print_response("what are our Hallmarks of Excellence in People Training", stream=True)
-agent.print_response("What was my last question?", markdown=True)
+
+# set up ui
+
+app = Playground(agents=[agent]).get_app()
+
+if __name__ == "__main__":
+    serve_playground_app("main:app",reload=True)
